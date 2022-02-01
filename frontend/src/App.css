@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+}
+.Title { 
+  text-align: center;
+  position: relative;
+  bottom: 20px;
+  top: 10px;
+}
+
+
+.contents {
+  overflow: hidden;
+  position: relative;
+  margin-left: 0px;
+  left: 45px;
+}
+
+.graph1 { 
+  position: relative;
+  bottom: 350px;
+}
+
+.graph2 { 
+  position: relative;
+  bottom: 280px;
+}
+
+.item {
+  float: left;
+  padding: 0px 10px;
+  margin-left: 120px;
+  text-align: center;
+}
+
+.Button-lat { 
+  position: relative;
+  left: 150px;
+  top: 120px;
+}
+
+.Button-lng { 
+  position: relative;
+  left: 330px;
+  top: 85px;
+}
+
+.Button-name { 
+  position: relative;
+  left: 500px;
+  top: 50px;
+}
+.Button-number { 
+  position: relative;
+  left: 700px;
+  top: 15px;
+}
+
