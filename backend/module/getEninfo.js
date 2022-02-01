@@ -5,7 +5,7 @@ const tensor = require('../module/tensorflow.js');
 
 exports.getEnInfo = async function(lat,lng){ 
   let predict = 0;
-  const url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lng+"&exclude=current,minutely,hourly&units=metric&appid="+(process.env.APIKEY || "12a6848b0eba55cb5fd19167cf528950");
+  const url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lng+"&exclude=current,minutely,hourly&units=metric&appid="+(process.env.APIKEY);
   const options = { 
     url:url,
     method:'GET',
