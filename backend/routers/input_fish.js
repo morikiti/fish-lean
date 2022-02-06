@@ -35,7 +35,7 @@ router.post("/",async (req,res) => {
 
     console.log(spots);
     const query = { 
-      text: "INSERT INTO spots VALUES($1,$2,$3,$4,$5)",
+      text: "INSERT INTO spots(lat,lng,spot,name,number) VALUES($1,$2,$3,$4,$5)",
       values: [req.body.lat, req.body.lng,spots ,req.body.name,req.body.number]
     };
 

@@ -213,7 +213,7 @@ function App() {
     if(run_learn){ 
       run_learn = false;
       axios.get('/api/tensorflow')
-        .then(res => { setPredict(res.data[0].predict);
+        .then(res => { setPredict(res.data[0].values);
           console.log(res.data.predict) 
         }).catch(err => { console.log(err)});
     }else { 

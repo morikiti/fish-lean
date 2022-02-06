@@ -1,4 +1,5 @@
 import GoogleMapReact from 'google-map-react';
+import React from 'react';
 import env from "dotenv"
 env.config()
 

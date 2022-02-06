@@ -33,7 +33,7 @@ exports.run =  async function run(temp_ave,temp_max,temp_min,lain,sun_time,press
   }
 
   query = { 
-    text: "INSERT INTO predict VALUES($1)",
+    text: "INSERT INTO predict(values) VALUES($1)",
     values: [arr]
   };
 
