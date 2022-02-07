@@ -44,7 +44,10 @@ router.post("/",async (req,res) => {
       const response = await client.query(query);
       console.log(response);
     } catch (err) { 
-      console.log(err);
+      res.status(500).json({
+        message:"Status:: 500",
+        err:err
+      })
     } finally { 
       await client.end();
     }
@@ -57,5 +60,70 @@ router.post("/",async (req,res) => {
   }
 });
 
+router.put('/:id',async (req,res)=>{ 
+  let client = new Client(config_pg);
+
+  const query = { 
+    text:`UPDATE spots SET name = $1, number = $2 WHERE id = '${req.params.id}'`,
+    values:[req.body.name,req.body.number],
+  };
+
+  try { 
+    await client.connect();
+    const response = await client.query(query);
+    if(response.rowCount === 0) { 
+      res.status(400).json({
+        message:"status:: 400",
+      })
+    }  else if (response.rowCount === 1) { 
+      res.status(200).json({
+        message:"Status:: 200"
+      });
+    }
+  } catch (err) { 
+    console.log(err);
+    res.status(500).json({
+      message:"Status:: 500",
+      err:err
+    })
+  } finally { 
+    await client.end();
+  }
+});
+
+
+router.delete('/:id',async (req,res) => { 
+  let client = new Client(config_pg);
+
+  const query = { 
+    text:`DELETE FROM spots WHERE id = ${req.params.id}`,
+  };
+
+  try { 
+    await client.connect();
+    const response = await client.query(query);
+    console.log(response);
+    if(response.rowCount === 0) { 
+      res.status(400).json({
+        message:"status:: 400",
+      })
+    }  else if (response.rowCount === 1) { 
+      res.status(200).json({
+        message:"Status:: 200",
+      });
+    }
+
+
+  } catch (err) { 
+    console.log(err);
+    res.status(500).json({
+      message:"Status:: 500",
+      err:err
+    })
+  }finally { 
+    await client.end();
+  }
+
+});
 
 module.exports = router;

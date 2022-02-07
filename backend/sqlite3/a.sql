@@ -1,3 +1,0 @@
-SELECT * FROM spots;
-DELETE FROM spots WHERE lat = 34.3060030306036;
-SELECT * FROM spots;

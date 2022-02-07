@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 //let bodyParser = require("body-parser");
 const app = express();
 //const cors = require('cors');
@@ -11,7 +12,7 @@ console.log(process.env.APIKEY);
 console.log(process.env.DATABASE_URL);
 
 app.disable("x-powered-by");
-
+app.use(helmet.xssFilter());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 console.log(path.join(__dirname,'/routers'));

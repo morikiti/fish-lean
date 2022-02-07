@@ -15,9 +15,20 @@ router.get('/',async (req,res)=>{
   try { 
     await client.connect();
     const response = await client.query(query);
-    res.json(response.rows);
+    //res.json(response.rows);
+    if(response.rowCount === 0) { 
+      res.status(400).json({
+        message:"status:: 400",
+      })
+    } else { 
+      res.status(200).json(response.rows);
+    }
+
   } catch (err) { 
-    console.log(err);
+    res.status(500).json({
+      message:"Status:: 500",
+      err:err
+    })
   } finally { 
     await client.end();
   }
@@ -36,9 +47,22 @@ router.get('/:id',async(req,res)=>{
   try { 
     await client.connect();
     const response = await client.query(query);
-    res.json(response.rows)
+    if(response.rowCount === 0) { 
+      res.status(400).json({
+        message:"status:: 400",
+      })
+    } else { 
+      res.status(200).json(response.rows);
+    }
+
   } catch (err) { 
-    console.log(err)
+    
+    console.log(err);
+    res.status(500).json({
+      message:"Status:: 500",
+      err:err
+    })
+  
   } finally { 
     await client.end();
   }
