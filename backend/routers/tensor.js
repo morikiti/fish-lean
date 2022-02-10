@@ -22,7 +22,6 @@ router.get("/",async (req,res) => {
   try { 
     await client.connect();
     const response = await client.query(query);
-    console.log("fdjsklaaslfAAAAAAAAAAAAAAAAAAAAAAAAAAAAda;d"+JSON.stringify(response.rows));
     res.json(response.rows);
   } catch(err) { 
     console.log(err);
