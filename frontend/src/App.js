@@ -2,12 +2,12 @@ import  { useState,useEffect } from 'react';
 import axios from "axios";
 import Title from './components/Title';
 import './App.css';
-import Button from './components/Button';
+import Button_and_Form from './components/Button_and_Form';
 import React from 'react';
 import Map from './components/Map';
 import Graph from './components/Graph';
-import Graph2 from './components/Graph2';
-import GetInfo from './components/GetInfo';
+import Graph_Split from './components/Graph_Split';
+import GetEnInfo from './components/GetEnInfo';
 import env from "dotenv"
 env.config()
 
@@ -227,8 +227,8 @@ function App() {
     <div >
       <Title />
       <Map class = "App"  setLatLng={setLatLng} handleApiLoaded = {handleApiLoaded}/>
-      <GetInfo getEnInfo2={getEnInfo2} Info ={Info}/>
-      <Button 
+      <GetEnInfo getEnInfo2={getEnInfo2} Info ={Info}/>
+      <Button_and_Form 
         lat={lat} lng = {lng} naem={name} number = {number} Info ={Info} predict = {predict} 
         getEnInfo2={getEnInfo2} handleSubmit ={handleSubmit}
         handleSubmit2={handleSubmit2} loadInfo = {loadInfo} 
@@ -237,7 +237,7 @@ function App() {
       <Graph containerStyle={containerStyle}  fishes = {fishes}/>
       {/* マーカを近距離に置き続けると重なって見えなくなる。
       そのため、クリックした場所の近くの統計をグラフとして表示 */}
-      <Graph2 containerStyle={containerStyle} get_fish = {get_fish}  graph = {graph}/>
+      <Graph_Split containerStyle={containerStyle} get_fish = {get_fish}  graph = {graph}/>
     </div>
   );
 }
