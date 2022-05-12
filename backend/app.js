@@ -13,7 +13,6 @@ console.log(process.env.DATABASE_URL);
 
 app.disable("x-powered-by");
 app.use(helmet.xssFilter());
-app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 console.log(path.join(__dirname,'/routers'));
 
@@ -36,13 +35,6 @@ app.use((err,req,res,next)=>{
   res.status(500);
   res.end('500 err'+err);
 });
-
-
-app.get('*', (req, res) => { 
-  res.sendFile(path.join(__dirname,'../frontend/build/index.html'));
-}); 
-
-
 
 app.listen(port,()=>{ 
   console.log(`Start Server ${port}`);
